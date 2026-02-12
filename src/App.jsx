@@ -40,7 +40,7 @@ export default function App() {
       </main> 
 
       <footer className="app-footer">
-        <small>Built with React • LocalStorage • Recharts</small>
+        <small>Built by Manasa • LocalStorage • Recharts</small>
       </footer>
     </div>
   );
