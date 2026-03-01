@@ -44,7 +44,7 @@ export default function ExpenseItem({ expense, onDelete, onEdit }) {
       </div>
 
       <div className="right">
-        <div className="amount">${Number(amount).toFixed(2)}</div>
+        <div className="amount">₹{Number(amount).toFixed(2)}</div>
         <div className="actions">
           <button className="btn tiny" onClick={() => onEdit(expense)}>
             Edit

@@ -53,7 +53,7 @@ body{
 
 .app-header{
   display:flex;
-  align-items:centre;
+  align-items:center;
   justify-content:space-between;
   gap:12px;
   margin-bottom:26px;

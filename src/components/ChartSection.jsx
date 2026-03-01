@@ -49,7 +49,7 @@ export default function ChartSection({ expenses }) {
                     <Cell key={i} fill={COLORS[i % COLORS.length]} />
                   ))}
                 </Pie>
-                <Tooltip formatter={(v) => `$${v.toFixed(2)}`} />
+                <Tooltip formatter={(v) => `₹${v.toFixed(2)}`} />
               </PieChart>
             </ResponsiveContainer>
           ) : (
@@ -65,7 +65,7 @@ export default function ChartSection({ expenses }) {
                 <CartesianGrid strokeDasharray="3 3" />
                 <XAxis dataKey="month" />
                 <YAxis />
-                <Tooltip formatter={(v) => `$${v.toFixed(2)}`} />
+                <Tooltip formatter={(v) => `₹${v.toFixed(2)}`} />
                 <Legend />
                 <Bar dataKey="value" fill="#4FC3F7" />
               </BarChart>

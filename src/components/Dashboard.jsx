@@ -7,7 +7,7 @@ import ChartSection from "./ChartSection";
 const STORAGE_KEY = "expenses_v1";
 const CATEGORIES = ["All", "Food", "Travel", "Bills", "Shopping", "Other"];
 
- function Dashboard() {
+ function Dashboard({ searchQuery = "" }) {
   const [expenses, setExpenses] = useState([]);
   const [editing, setEditing] = useState(null);
   const [categoryFilter, setCategoryFilter] = useState("All");
@@ -46,15 +46,23 @@ const CATEGORIES = ["All", "Food", "Travel", "Bills", "Shopping", "Other"];
 
   // filters applied to list and charts
   const filteredExpenses = useMemo(() => {
+    const query = searchQuery.trim().toLowerCase();
+
     return expenses.filter((e) => {
       if (categoryFilter !== "All" && e.category !== categoryFilter) return false;
       if (monthFilter !== "All") {
         const ym = e.date.slice(0, 7); // YYYY-MM
         if (ym !== monthFilter) return false;
       }
+
+      if (query) {
+        const haystack = `${e.title} ${e.category} ${e.note || ""}`.toLowerCase();
+        if (!haystack.includes(query)) return false;
+      }
+
       return true;
     });
-  }, [expenses, categoryFilter, monthFilter]);
+  }, [expenses, categoryFilter, monthFilter, searchQuery]);
 
   // derived months available for filter
   const months = useMemo(() => {
