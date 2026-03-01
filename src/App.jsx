@@ -1,8 +1,10 @@
 
-import React from "react";
+import React, { useState } from "react";
 import Dashboard from "./components/Dashboard";
 
 export default function App() {
+  const [searchQuery, setSearchQuery] = useState("");
+
   return (
     <div className="app">
       <header className="app-header">
@@ -27,7 +29,12 @@ export default function App() {
 
         <div className="header-actions">
           <div className="search">
-            <input placeholder="Search expenses..." />
+            <input
+              placeholder="Search expenses..."
+              value={searchQuery}
+              onChange={(e) => setSearchQuery(e.target.value)}
+              aria-label="Search expenses"
+            />
           </div>
           {/* <button className="btn avatar" title="Profile">
             MA
@@ -36,7 +43,7 @@ export default function App() {
       </header>
 
       <main className="container">
-        <Dashboard />
+        <Dashboard searchQuery={searchQuery} />
       </main> 
 
       <footer className="app-footer">
